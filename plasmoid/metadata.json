@@ -1,0 +1,17 @@
+{
+	"KPackageStructure": "Plasma/Applet",
+	"KPlugin": {
+		"Id": "io.github.snurfer0.burnbar",
+		"Name": "Burnbar",
+		"Description": "Claude Code usage limits in your panel: what is used, when it resets, and whether you will run out first",
+		"Icon": "burnbar",
+		"Category": "System Information",
+		"Authors": [{ "Name": "yekgaa" }],
+		"Copyright": "© 2026 yekgaa. Not affiliated with Anthropic.",
+		"Website": "https://github.com/snurfer0/burnbar",
+		"BugReportUrl": "https://github.com/snurfer0/burnbar/issues",
+		"License": "MIT",
+		"Version": "0.1.0"
+	},
+	"X-Plasma-API-Minimum-Version": "6.0"
+}

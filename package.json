@@ -1,0 +1,19 @@
+{
+	"name": "burnbar",
+	"description": "Claude Code usage limits in the KDE Plasma panel",
+	"license": "MIT",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"start": "bun src/cli.ts",
+		"build": "bun build src/cli.ts --target=bun --outfile plasmoid/contents/code/burnbar.mjs",
+		"package": "bun run build && rm -rf dist && mkdir dist && cd plasmoid && zip -qr ../dist/burnbar-$(bun -p \"require('./metadata.json').KPlugin.Version\").plasmoid .",
+		"check": "biome check . && tsc --noEmit",
+		"fix": "biome check --write ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.14",
+		"@types/bun": "^1.4.2",
+		"typescript": "^7.0.2"
+	}
+}
