@@ -2,7 +2,7 @@
 
 Claude Code usage limits in your KDE Plasma panel: how much is used, when it resets, and whether you will run out first.
 
-<p align="center"><img src="docs/panel.png" alt="Bar, ring and text styles in the panel"></p>
+<p align="center"><img src="docs/panel.png" alt="Burnbar in the panel"></p>
 
 <p align="center">
   <img src="docs/popup.png" width="49%" alt="Popup with every limit, forecast and usage graph">
