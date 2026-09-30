@@ -18,7 +18,7 @@
     <entry name="critAt" type="Int"><default>95</default></entry>
     <entry name="warnOnPace" type="Bool"><default>true</default></entry>
     <entry name="notify" type="Bool"><default>true</default></entry>
-    <entry name="interval" type="Int"><default>60</default></entry>
+    <entry name="interval" type="Int"><default>120</default></entry>
     <entry name="claudeFolder" type="String"><default></default></entry>
     <entry name="checkUpdates" type="Bool"><default>true</default></entry>
     <entry name="autoUpdate" type="Bool"><default>false</default></entry>

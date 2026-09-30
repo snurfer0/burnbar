@@ -20,7 +20,6 @@ Kirigami.FormLayout {
         textRole: "text"
         valueRole: "value"
         model: [
-            { text: "Minute", value: 60 },
             { text: "2 minutes", value: 120 },
             { text: "5 minutes", value: 300 },
             { text: "15 minutes", value: 900 },
@@ -40,7 +39,7 @@ Kirigami.FormLayout {
     QQC2.Label {
         Layout.maximumWidth: Kirigami.Units.gridUnit * 20
         wrapMode: Text.WordWrap
-        text: "Applies while Claude Code is in use. When it is idle, the limits are fetched every 15 minutes at most. Anthropic blocks usage checks for a while when they come more often than about once a minute."
+        text: "Applies while Claude Code is in use. When it is idle, the limits are fetched every 15 minutes at most. Anthropic refuses checks for a while when they come more often, since Claude Code reads the same limits."
         font: Kirigami.Theme.smallFont
         opacity: 0.7
     }

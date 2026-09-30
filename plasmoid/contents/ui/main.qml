@@ -27,8 +27,8 @@ PlasmoidItem {
     // The files on disk are newer than what plasmashell loaded: an update waits for a restart.
     readonly property bool restartPending: !!updateStatus.current && updateStatus.current !== meta.version
     property double now: Date.now()
-    // Anthropic answers 429 when usage is read more often than about once a minute.
-    readonly property int interval: Math.max(60, config.interval)
+    // Anthropic answers 429 to checks a minute apart, since Claude Code reads the same limits.
+    readonly property int interval: Math.max(120, config.interval)
 
     readonly property var panelLimits: {
         const limits = snapshot.limits
