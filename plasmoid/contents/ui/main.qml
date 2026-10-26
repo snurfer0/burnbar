@@ -138,10 +138,23 @@ PlasmoidItem {
         now = Date.now()
         announce()
     }
-    // Runs a command once and hands its output to `done`. The timestamp keeps two runs of
-    // the same command apart, since the data engine knows a source by its text.
+    // Runs a command once and hands its output to `done`. A run needs a source name no running
+    // source has, as the data engine knows a source by its text. Names are reused once the
+    // engine has let go of them: every executable DataSource in the shell keeps a key for each
+    // source name the engine ever dropped and rebuilds its data map for each new one, so a fresh
+    // name per run makes the whole shell slower the longer it runs.
+    property var freeSources: []
+    property var ownSources: ({})
+    function sourceFor(command) {
+        const prefix = command + " #"
+        const i = freeSources.findIndex(s => s.startsWith(prefix) && /^\d+$/.test(s.slice(prefix.length)))
+        if (i >= 0) return freeSources.splice(i, 1)[0]
+        const source = prefix + Date.now()
+        ownSources[source] = true
+        return source
+    }
     function run(line, done) {
-        const source = line + " #" + Date.now()
+        const source = sourceFor(line)
         shell.pending[source] = done
         shell.connectSource(source)
     }
@@ -274,6 +287,10 @@ PlasmoidItem {
             const done = pending[source]
             delete pending[source]
             if (done) done(data)
+        }
+        // Heard before the engine lets go of the source, so the name is only put aside here.
+        onSourceRemoved: source => {
+            if (root.ownSources[source] && root.freeSources.indexOf(source) < 0) root.freeSources.push(source)
         }
     }
     // The command asks GitHub at most once a day; asking it every hour catches a wake from sleep.
